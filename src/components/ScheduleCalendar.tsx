@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -41,6 +40,21 @@ const ScheduleCalendar = () => {
     );
   };
 
+  const redirectToWhatsApp = (booking: Booking) => {
+    const phoneNumber = "5511999999999"; // Substitua pelo número real do responsável
+    const message = `Olá! Gostaria de confirmar o agendamento da Arena_v3_Rodolfo_Teofilo:
+    
+📅 Data: ${formatDate(booking.date)}
+⏰ Horário: ${booking.time}
+👥 Time: ${booking.team}
+⏱️ Duração: ${booking.duration} minutos
+
+Aguardo a confirmação!`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -78,8 +92,13 @@ const ScheduleCalendar = () => {
 
     toast({
       title: "Agendamento realizado!",
-      description: `Campo reservado para ${teamName} em ${selectedDate} às ${selectedTime}.`,
+      description: `Campo reservado para ${teamName}. Redirecionando para WhatsApp...`,
     });
+
+    // Redirecionar para WhatsApp após 2 segundos
+    setTimeout(() => {
+      redirectToWhatsApp(newBooking);
+    }, 2000);
   };
 
   const getTodayDate = () => {

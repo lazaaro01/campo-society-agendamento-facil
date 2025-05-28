@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
@@ -16,7 +15,7 @@ const Index = () => {
       <section className="soccer-gradient field-pattern text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
-            Campo Society Premium
+            Arena_v3_Rodolfo_Teofilo
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             O melhor campo society da região. Grama sintética de qualidade, 
@@ -163,7 +162,7 @@ const Index = () => {
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <span className="text-white font-bold">⚽</span>
             </div>
-            <span className="text-xl font-bold">Campo Society Premium</span>
+            <span className="text-xl font-bold">Arena_v3_Rodolfo_Teofilo</span>
           </div>
           <p className="text-gray-400">
             O melhor campo society da região - Sistema de agendamento online
