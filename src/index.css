@@ -111,24 +111,77 @@
   background: linear-gradient(to right, #059669, #10b981, #16a34a);
 }
 
-/* Responsividade adicional */
+/* Responsividade mobile */
 @media (max-width: 768px) {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  
+  body {
+    font-size: 14px;
+  }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
   .text-5xl {
-    font-size: 2.5rem;
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+  
+  .text-4xl {
+    font-size: 1.75rem !important;
   }
   
   .text-3xl {
-    font-size: 1.875rem;
+    font-size: 1.5rem !important;
   }
   
   .text-2xl {
-    font-size: 1.5rem;
+    font-size: 1.25rem !important;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem !important;
+  }
+  
+  .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .py-16 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .py-20 {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .text-5xl {
+    font-size: 1.75rem !important;
+  }
+  
+  .text-3xl {
+    font-size: 1.375rem !important;
+  }
+  
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .px-8 {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 }
