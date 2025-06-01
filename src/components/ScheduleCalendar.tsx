@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,17 +23,34 @@ const ScheduleCalendar = () => {
   const [teamName, setTeamName] = useState('');
   const [duration, setDuration] = useState('60');
 
-  // Gerar horários disponíveis (8:00 às 22:00)
-  const generateTimeSlots = () => {
+  // Gerar horários disponíveis baseados no dia da semana
+  const generateTimeSlots = (dateStr: string) => {
+    if (!dateStr) return [];
+    
+    const date = new Date(dateStr + 'T00:00:00');
+    const dayOfWeek = date.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+    
     const slots = [];
-    for (let hour = 8; hour < 22; hour++) {
-      const timeStr = `${hour.toString().padStart(2, '0')}:00`;
-      slots.push(timeStr);
+    
+    if (dayOfWeek === 6) { // Sábado
+      // Sábado: 04:00 às 20:00
+      for (let hour = 4; hour < 20; hour++) {
+        const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+        slots.push(timeStr);
+      }
+    } else if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
+      // Segunda a sexta: 07:00 às 23:00
+      for (let hour = 7; hour < 23; hour++) {
+        const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+        slots.push(timeStr);
+      }
     }
+    // Domingo não tem horários disponíveis
+    
     return slots;
   };
 
-  const timeSlots = generateTimeSlots();
+  const timeSlots = generateTimeSlots(selectedDate);
 
   const isTimeSlotAvailable = (date: string, time: string) => {
     return !bookings.some(booking => 
@@ -110,6 +128,28 @@ Aguardo a confirmação!`;
     return date.toLocaleDateString('pt-BR');
   };
 
+  const getDayName = (dateStr: string) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr + 'T00:00:00');
+    const dayOfWeek = date.getDay();
+    const days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+    return days[dayOfWeek];
+  };
+
+  const getOperatingHours = (dateStr: string) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr + 'T00:00:00');
+    const dayOfWeek = date.getDay();
+    
+    if (dayOfWeek === 6) { // Sábado
+      return '04:00 - 20:00';
+    } else if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
+      return '07:00 - 23:00';
+    } else { // Domingo
+      return 'Fechado';
+    }
+  };
+
   return (
     <div className="space-y-8">
       <Card>
@@ -132,6 +172,11 @@ Aguardo a confirmação!`;
                   min={getTodayDate()}
                   required
                 />
+                {selectedDate && (
+                  <p className="text-sm text-gray-600">
+                    {getDayName(selectedDate)} - {getOperatingHours(selectedDate)}
+                  </p>
+                )}
               </div>
               
               <div className="space-y-2">
@@ -141,6 +186,11 @@ Aguardo a confirmação!`;
                     <SelectValue placeholder="Selecione o horário" />
                   </SelectTrigger>
                   <SelectContent>
+                    {timeSlots.length === 0 && selectedDate && (
+                      <SelectItem value="" disabled>
+                        {getDayName(selectedDate) === 'Domingo' ? 'Fechado aos domingos' : 'Nenhum horário disponível'}
+                      </SelectItem>
+                    )}
                     {timeSlots.map((time) => (
                       <SelectItem 
                         key={time} 
@@ -229,9 +279,19 @@ Aguardo a confirmação!`;
           <CardTitle>Horário de Funcionamento</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center p-4 bg-primary/10 rounded-lg">
-            <p className="text-lg font-semibold">🕐 08:00 às 22:00</p>
-            <p className="text-gray-600 mt-2">Todos os dias da semana</p>
+          <div className="space-y-3">
+            <div className="p-4 bg-primary/10 rounded-lg">
+              <p className="font-semibold text-lg">Segunda a Sexta</p>
+              <p className="text-gray-600">🕐 07:00 às 23:00</p>
+            </div>
+            <div className="p-4 bg-primary/10 rounded-lg">
+              <p className="font-semibold text-lg">Sábado</p>
+              <p className="text-gray-600">🕐 04:00 às 20:00</p>
+            </div>
+            <div className="p-4 bg-gray-100 rounded-lg">
+              <p className="font-semibold text-lg">Domingo</p>
+              <p className="text-gray-600">❌ Fechado</p>
+            </div>
           </div>
         </CardContent>
       </Card>

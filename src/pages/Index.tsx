@@ -133,10 +133,26 @@ const Index = () => {
               
               <div className="bg-primary/10 rounded-lg p-8 text-center">
                 <h3 className="text-2xl font-bold mb-4">Horário de Funcionamento</h3>
-                <div className="text-4xl font-bold text-primary mb-2">
-                  08:00 - 22:00
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-3xl font-bold text-primary mb-1">
+                      07:00 - 23:00
+                    </div>
+                    <p className="text-gray-600">Segunda a Sexta</p>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-primary mb-1">
+                      04:00 - 20:00
+                    </div>
+                    <p className="text-gray-600">Sábado</p>
+                  </div>
+                  <div>
+                    <div className="text-xl font-bold text-gray-500 mb-1">
+                      Fechado
+                    </div>
+                    <p className="text-gray-600">Domingo</p>
+                  </div>
                 </div>
-                <p className="text-gray-600">Todos os dias da semana</p>
                 
                 <div className="mt-6 pt-6 border-t">
                   <p className="text-sm text-gray-500 mb-4">
