@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
@@ -8,16 +9,16 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
-      <section className="soccer-gradient field-pattern text-white py-20">
+      <section className="soccer-gradient field-pattern text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 animate-fade-in">
             Arena_v3_Rodolfo_Teofilo
           </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto opacity-95">
             O melhor campo society da região. Grama sintética de qualidade, 
             vestiários completos e sistema de agendamento online.
           </p>
@@ -26,7 +27,7 @@ const Index = () => {
               size="lg" 
               variant="secondary"
               onClick={() => navigate('/schedule')}
-              className="text-lg px-8 py-3"
+              className="text-base md:text-lg px-6 md:px-8 py-3 hover:scale-105 transition-transform shadow-lg"
             >
               Agendar Horário
             </Button>
@@ -34,7 +35,7 @@ const Index = () => {
               size="lg" 
               variant="outline"
               onClick={() => navigate('/teams')}
-              className="text-lg px-8 py-3 border-white text-white hover:bg-white hover:text-primary"
+              className="text-base md:text-lg px-6 md:px-8 py-3 border-white text-white hover:bg-white hover:text-primary hover:scale-105 transition-all shadow-lg"
             >
               Cadastrar Time
             </Button>
@@ -43,54 +44,53 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16">
+      <section className="py-12 md:py-16 bg-white/95 backdrop-blur-sm">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-gray-800">
             Por que escolher nosso campo?
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="text-center hover:shadow-lg transition-shadow">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/90 backdrop-blur-sm">
               <CardHeader>
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle>Agendamento Online</CardTitle>
+                <CardTitle className="text-lg md:text-xl">Agendamento Online</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm md:text-base">
                   Sistema fácil e rápido para agendar seu horário. 
                   Disponível 24/7 pela internet.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/90 backdrop-blur-sm">
               <CardHeader>
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle>Cadastro de Times</CardTitle>
+                <CardTitle className="text-lg md:text-xl">Cadastro de Times</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm md:text-base">
                   Registre seu time e tenha acesso a descontos especiais 
                   e prioridade nos agendamentos.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="text-center hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/90 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
               <CardHeader>
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle>Horário Flexível</CardTitle>
+                <CardTitle className="text-lg md:text-xl">Horário Flexível</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">
-                  Funcionamos das 8h às 22h todos os dias, 
-                  para você jogar quando for mais conveniente.
+                <p className="text-gray-600 text-sm md:text-base">
+                  Funcionamos das 7h às 23h de segunda à sexta e das 4h às 20h no sábado.
                 </p>
               </CardContent>
             </Card>
@@ -99,58 +99,58 @@ const Index = () => {
       </section>
 
       {/* Info Section */}
-      <section className="bg-white py-16">
+      <section className="bg-white/95 backdrop-blur-sm py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-bold mb-6">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-800">
                   Estrutura Completa
                 </h2>
-                <ul className="space-y-4 text-gray-600">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
+                <ul className="space-y-3 md:space-y-4 text-gray-600">
+                  <li className="flex items-center text-sm md:text-base">
+                    <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
                     Grama sintética de última geração
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
+                  <li className="flex items-center text-sm md:text-base">
+                    <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
                     Iluminação LED profissional
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
+                  <li className="flex items-center text-sm md:text-base">
+                    <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
                     Vestiários com chuveiro quente
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
+                  <li className="flex items-center text-sm md:text-base">
+                    <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
                     Estacionamento gratuito
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
+                  <li className="flex items-center text-sm md:text-base">
+                    <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
                     Lanchonete no local
                   </li>
                 </ul>
               </div>
               
-              <div className="bg-primary/10 rounded-lg p-8 text-center">
-                <h3 className="text-2xl font-bold mb-4">Horário de Funcionamento</h3>
-                <div className="space-y-3">
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 md:p-8 text-center shadow-xl order-1 lg:order-2">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">Horário de Funcionamento</h3>
+                <div className="space-y-3 md:space-y-4">
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-1">
+                    <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
                       07:00 - 23:00
                     </div>
-                    <p className="text-gray-600">Segunda a Sexta</p>
+                    <p className="text-gray-600 text-sm md:text-base">Segunda a Sexta</p>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-primary mb-1">
+                    <div className="text-xl md:text-2xl font-bold text-primary mb-1">
                       04:00 - 20:00
                     </div>
-                    <p className="text-gray-600">Sábado</p>
+                    <p className="text-gray-600 text-sm md:text-base">Sábado</p>
                   </div>
                   <div>
-                    <div className="text-xl font-bold text-gray-500 mb-1">
+                    <div className="text-lg md:text-xl font-bold text-gray-500 mb-1">
                       Fechado
                     </div>
-                    <p className="text-gray-600">Domingo</p>
+                    <p className="text-gray-600 text-sm md:text-base">Domingo</p>
                   </div>
                 </div>
                 
@@ -160,7 +160,7 @@ const Index = () => {
                   </p>
                   <Button 
                     onClick={() => navigate('/schedule')}
-                    className="w-full"
+                    className="w-full hover:scale-105 transition-transform"
                   >
                     Agendar Agora
                   </Button>
@@ -172,15 +172,15 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
+      <footer className="bg-gray-800/95 backdrop-blur-sm text-white py-6 md:py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
               <span className="text-white font-bold">⚽</span>
             </div>
-            <span className="text-xl font-bold">Arena_v3_Rodolfo_Teofilo</span>
+            <span className="text-lg md:text-xl font-bold">Arena_v3_Rodolfo_Teofilo</span>
           </div>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-sm md:text-base">
             O melhor campo society da região - Sistema de agendamento online
           </p>
         </div>
