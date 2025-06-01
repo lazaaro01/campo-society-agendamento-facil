@@ -25,7 +25,6 @@ const Header = () => {
               <h1 className="text-sm sm:text-lg md:text-xl font-bold text-gray-900 hover:text-primary transition-colors truncate">
                 Arena_v3_Rodolfo_Teofilo
               </h1>
-              <p className="text-xs sm:text-sm text-primary font-semibold">Premium</p>
             </div>
           </div>
           

@@ -126,7 +126,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center text-sm md:text-base">
                     <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
-                    Lanchonete no local
+                    Bar no local
                   </li>
                 </ul>
               </div>
@@ -142,13 +142,13 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-1">
-                      04:00 - 20:00
+                      16:00 - 20:00
                     </div>
                     <p className="text-gray-600 text-sm md:text-base">Sábado</p>
                   </div>
                   <div>
                     <div className="text-base sm:text-lg md:text-xl font-bold text-gray-500 mb-1">
-                      Fechado
+                      Agendado
                     </div>
                     <p className="text-gray-600 text-sm md:text-base">Domingo</p>
                   </div>

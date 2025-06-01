@@ -7,8 +7,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+       "typeRoots": ["node_modules/@types", "src/types"]
     },
+
+     "include": [
+    "src/**/*"
+  ],
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,

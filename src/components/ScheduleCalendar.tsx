@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "@/hooks/use-toast";
-import { Calendar, QrCode } from "lucide-react";
+import { Calendar, QrCode } from "lucide-react"; 
+import  Pix   from "pix-payload";
 
 interface Booking {
   id: string;
@@ -27,9 +28,9 @@ const ScheduleCalendar = () => {
   const [showQRCode, setShowQRCode] = useState(false);
 
   // PIX do proprietário (substitua pelos dados reais)
-  const pixKey = "rodolfo.teofilo@arena.com";
-  const pixName = "Rodolfo Teofilo";
-  const pixCity = "São Paulo";
+  const pixKey = "02878408322";
+  const pixName = "Vitor Lucas Nogueira";
+  const pixCity = "Fortaleza - CE";
 
   // Gerar horários disponíveis baseados no dia da semana
   const generateTimeSlots = (dateStr: string) => {
@@ -41,8 +42,8 @@ const ScheduleCalendar = () => {
     const slots = [];
     
     if (dayOfWeek === 6) { // Sábado
-      // Sábado: 04:00 às 20:00
-      for (let hour = 4; hour < 20; hour++) {
+      // Sábado: 16:00 às 20:00
+      for (let hour = 16; hour < 20; hour++) {
         const timeStr = `${hour.toString().padStart(2, '0')}:00`;
         slots.push(timeStr);
       }
@@ -66,12 +67,16 @@ const ScheduleCalendar = () => {
     );
   };
 
-  const generatePixPayload = (value: number) => {
-    // Formato básico do PIX (EMV QR Code)
-    // Este é um formato simplificado - em produção, use uma biblioteca específica para PIX
-    const pixPayload = `00020126580014br.gov.bcb.pix0136${pixKey}5204000053039865802BR5913${pixName}6009${pixCity}62070503***6304`;
-    return pixPayload;
-  };
+ const generatePixPayload = (value: number) => {
+  const pix = Pix({
+    pixKey: pixKey,
+    merchantName: pixName,
+    merchantCity: pixCity,
+    transactionAmount: value.toFixed(2),
+    transactionId: '***',
+  });
+  return pix.payload();
+};
 
   const generateQRCodeUrl = (payload: string) => {
     // Usando QR Server API para gerar QR Code
@@ -89,7 +94,7 @@ const ScheduleCalendar = () => {
   };
 
   const redirectToWhatsApp = (booking: Booking, price: number) => {
-    const phoneNumber = "5511999999999"; // Substitua pelo número real do responsável
+    const phoneNumber = "5585992114586"; // Substitua pelo número real do responsável
     
     let paymentInfo = '';
     if (booking.paymentMethod === 'pix') {
@@ -210,7 +215,7 @@ Aguardo a confirmação!`;
     const dayOfWeek = date.getDay();
     
     if (dayOfWeek === 6) { // Sábado
-      return '04:00 - 20:00';
+      return '16:00 - 20:00';
     } else if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Segunda a sexta
       return '07:00 - 23:00';
     } else { // Domingo
@@ -439,7 +444,7 @@ Aguardo a confirmação!`;
             </div>
             <div className="p-4 bg-gray-100 rounded-lg">
               <p className="font-semibold text-lg">Domingo</p>
-              <p className="text-gray-600">❌ Fechado</p>
+              <p className="text-gray-600">❌ Agendado</p>
             </div>
           </div>
         </CardContent>
