@@ -33,9 +33,9 @@ const Index = () => {
             </Button>
             <Button 
               size="lg" 
-              variant="outline"
+              variant="secondary"
               onClick={() => navigate('/teams')}
-              className="text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 border-white text-white hover:bg-white hover:text-primary hover:scale-105 transition-all shadow-lg w-full sm:w-auto"
+              className="text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 hover:scale-105 transition-all shadow-lg w-full sm:w-auto bg-white text-primary hover:bg-gray-100"
             >
               Cadastrar Time
             </Button>
